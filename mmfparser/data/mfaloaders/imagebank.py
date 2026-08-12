@@ -17,7 +17,6 @@
 
 from mmfparser.loader import DataLoader
 import hashlib
-from mmfparser.data.chunkloaders.imagebank import ImageItem
 
 class AGMIBank(DataLoader):
     palette = None
@@ -56,4 +55,4 @@ class AGMIBank(DataLoader):
             item.write(reader)
            # print len(reader)
 
-
+from mmfparser.data.chunkloaders.imagebank import ImageItem
