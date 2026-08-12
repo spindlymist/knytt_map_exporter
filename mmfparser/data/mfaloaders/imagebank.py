@@ -26,30 +26,30 @@ class AGMIBank(DataLoader):
         self.itemDict = {}
 
     def read(self, reader):
-        print 'TEX READ'
+        # print 'TEX READ'
         self.graphicMode = reader.readInt()
         self.paletteVersion = reader.readShort(True)
         self.paletteEntries = reader.readShort(True)
         self.palette = [reader.readColor()
             for _ in xrange(256)]
         count = reader.readInt()
-        print "Number of image-items:"
-        print count
+        # print "Number of image-items:"
+        # print count
         for _ in xrange(count):
             item = self.new(ImageItem, reader, debug=True)
             self.items.append(item)
             self.itemDict[item.handle] = item
 
     def write(self, reader):
-        print 'TEX WRITE'
+        # print 'TEX WRITE'
         reader.writeInt(self.graphicMode)
         reader.writeShort(self.paletteVersion, True)
         reader.writeShort(self.paletteEntries, True)
         for item in self.palette:
             reader.writeColor(item)
         reader.writeInt(len(self.items))
-        print "Number of items count offset:"
-        print len(self.items)
+        # print "Number of items count offset:"
+        # print len(self.items)
         for item in self.items:
            # print "Writing tex to MFA"
             item.write(reader)
