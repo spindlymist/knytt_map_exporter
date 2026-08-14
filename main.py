@@ -132,7 +132,7 @@ def path_movement_to_dict(movement):
 
 def path_step_to_dict(step):
     # Each point in the path is an instance of Step (mmfparser/data/chunkoaders/movement.py:174)
-    # The destination will be in world coordinates, of course
+    # Disregard, I'm not sure what the coordinate system is. Maybe relative to initial position? -> (The destination will be in world coordinates, of course)
     vals = {
         "speed": step.speed,
         "direction": step.direction,
