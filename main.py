@@ -82,6 +82,7 @@ class TileOrObject:
 def parse_screens(frame):
     item_dict = {}
     for item in frame.items:
+        item.name = mmf_str_to_unicode(item.name)
         item_dict[item.handle] = item
 
     screens = {}
@@ -152,8 +153,11 @@ def path_step_to_dict(step):
         "pause": step.pause
     }
     if step.name:
-        vals['name'] = step.name
+        vals['name'] = mmf_str_to_unicode(step.name)
     return vals
+
+def mmf_str_to_unicode(str):
+    return str.decode('cp1252')
 
 if __name__ == "__main__":
     main()
